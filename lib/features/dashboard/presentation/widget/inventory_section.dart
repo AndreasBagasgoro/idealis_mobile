@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:idealis_mobile/core/constants/app_colors.dart';
+import 'package:idealis_mobile/features/dashboard/presentation/widget/inventory_card.dart';
 
 class InventorySection extends StatelessWidget {
-  final String title;
-  final String description;
-  final String? logoPath;
+  final int expiringCount;
+  final int expiringDays;
+  final int totalCount;
 
   const InventorySection({
     Key? key,
-    required this.title,
-    required this.description,
-    this.logoPath,
+    required this.expiringCount,
+    required this.expiringDays,
+    required this.totalCount,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
-      height: 220,
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.grey.withOpacity(0.5),
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -31,74 +31,47 @@ class InventorySection extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Rekomendasi menu hari ini 👨🏻‍🍳',
+              'Inventaris 🗄️',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                logoPath != null
-                    ? ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(logoPath!, width: 80, height: 80),
-                    )
-                    : Container(
-                      width: 160,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: AppColors.grey,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(Icons.fastfood, color: AppColors.white),
+            SizedBox(height: 12),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Card 1 - Segera Kadaluarsa
+                  Expanded(
+                    child: InventoryCard(
+                      title: 'Segera Kadaluarsa',
+                      icon: Icons.hourglass_bottom_rounded,
+                      iconColor: Color(0xFFBFA659),
+                      countText: '$expiringCount item',
+                      label: 'dalam $expiringDays hari',
+                      borderLeftColor: Color(0xFFBFA659),
+                      backgroundColor: Color(0xFFFFFAEA),
                     ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // ✅ Title
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black,
-                      ),
+                  ),
+                  SizedBox(width: 12),
+                  // Card 2 - Ringkasan Inventaris
+                  Expanded(
+                    child: InventoryCard(
+                      title: 'Ringkasan Inventaris',
+                      icon: Icons.inventory_2_outlined,
+                      iconColor: Color(0xFF4D774F),
+                      countText: '$totalCount item',
+                      label: 'total tersedia',
+                      borderLeftColor: Color(0xFF4D774F),
+                      backgroundColor: Color(0xFFF2F9F3),
                     ),
-                    SizedBox(height: 4),
-                    // ✅ Description
-                    Text(
-                      description,
-                      style: TextStyle(fontSize: 12, color: Colors.black),
-                    ),
-                    SizedBox(height: 12),
-                    // ✅ Tombol Lihat Resep
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      child: Text(
-                        'Lihat Resep',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
