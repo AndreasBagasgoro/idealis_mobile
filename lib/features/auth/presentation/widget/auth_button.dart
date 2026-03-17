@@ -5,7 +5,7 @@ class AuthButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isLoading;
 
-  AuthButton({
+  const AuthButton({super.key, 
     required this.text,
     required this.onPressed,
     this.isLoading = false,

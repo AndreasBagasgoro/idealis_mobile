@@ -14,7 +14,7 @@ import 'features/auth/presentation/providers/auth_provider.dart';
 import 'features/auth/presentation/pages/login_page.dart';
 import 'features/auth/presentation/pages/register_page.dart';
 import 'features/auth/presentation/pages/complete_profile.dart';
-import 'features/dashboard/presentation/pages/dashboard.dart';
+import 'core/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,12 +51,12 @@ class MyApp extends StatelessWidget {
         title: 'Idealis Mobile',
         theme: ThemeData(primarySwatch: Colors.blue),
         // home: isLoggedIn ? RegisterPage() : LoginPage(),
-        home: DashboardPage(),
+        home: const AppRouter(),
         routes: {
           '/login': (context) => LoginPage(),
           '/register': (context) => RegisterPage(),
           '/complete_profile': (context) => CompleteProfilePage(),
-          '/dashboard': (context) => DashboardPage(),
+          '/dashboard': (context) => const AppRouter(),
         },
       ),
     );

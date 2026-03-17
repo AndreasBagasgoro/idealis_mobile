@@ -9,6 +9,8 @@ import 'login_page.dart';
 import 'package:idealis_mobile/core/constants/app_colors.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }

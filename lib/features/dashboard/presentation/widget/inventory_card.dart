@@ -11,7 +11,7 @@ class InventoryCard extends StatelessWidget {
   final Color? backgroundColor;
 
   const InventoryCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.iconColor,
@@ -19,7 +19,7 @@ class InventoryCard extends StatelessWidget {
     required this.label,
     this.borderLeftColor,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

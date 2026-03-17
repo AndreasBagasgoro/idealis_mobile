@@ -20,7 +20,7 @@ class CustomDropdownField<T> extends StatelessWidget {
   final TextStyle? selectedItemTextStyle; // ✅ style untuk item yang dipilih
 
   const CustomDropdownField({
-    Key? key,
+    super.key,
     required this.label,
     required this.hintText,
     required this.items,
@@ -29,7 +29,7 @@ class CustomDropdownField<T> extends StatelessWidget {
     this.fillColor,
     this.itemTextStyle,
     this.selectedItemTextStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

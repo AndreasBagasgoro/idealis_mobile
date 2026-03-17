@@ -13,7 +13,7 @@ class PrimaryButton extends StatelessWidget {
   final IconData? icon;
 
   const PrimaryButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.isLoading = false,
@@ -23,7 +23,7 @@ class PrimaryButton extends StatelessWidget {
     this.textColor,
     this.borderRadius = 30,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

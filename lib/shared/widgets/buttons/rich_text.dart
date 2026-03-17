@@ -8,11 +8,11 @@ class RichTextButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const RichTextButton({
-    Key? key,
+    super.key,
     required this.normalText,
     required this.actionText,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

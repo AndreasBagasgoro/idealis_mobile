@@ -6,6 +6,8 @@ import 'package:idealis_mobile/features/dashboard/presentation/widget/recommenda
 import 'package:idealis_mobile/features/dashboard/presentation/widget/recipe_section.dart';
 
 class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
+
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
@@ -15,40 +17,62 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(180),
-        child: SafeArea(
-          child: Header(
-            username: 'John Doe',
-            logoPath: 'assets/images/idealis_text.png',
-            onNotificationTap: () {
-              print('Ini tombol notifikasi');
-            },
+      body: SafeArea(
+        bottom: false,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Header — now scrolls with content
+              Header(
+                username: 'John Doe',
+                logoPath: 'assets/images/idealis_text.png',
+                onNotificationTap: () {
+                  print('Ini tombol notifikasi');
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: Column(
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: 210, maxHeight: 220),
+                      child: RecommendationSection(
+                        title: 'Sop Ayam',
+                        description:
+                            'Menggunakan ayam, wortel, dan kentang dari inventaris Anda. ',
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: 150, maxHeight: 200),
+                      child: InventorySection(
+                        expiringCount: 5,
+                        expiringDays: 3,
+                        totalCount: 24,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    RecipeSection(
+                      recipes: [
+                        RecipeCardData(
+                          image: 'assets/images/sop_ayam.png',
+                          title: 'Sop Ayam',
+                          cookedCount: 12,
+                          category: 'Sup',
+                        ),
+                        RecipeCardData(
+                          image: 'assets/images/nasi_goreng.png',
+                          title: 'Nasi Goreng',
+                          cookedCount: 25,
+                          category: 'Nasi',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: Column(
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints(minHeight: 210, maxHeight: 220),
-              child: RecommendationSection(
-                title: 'Sop Ayam',
-                description:
-                    'Menggunakan ayam, wortel, dan kentang dari inventaris Anda. ',
-              ),
-            ),
-            SizedBox(height: 16),
-            ConstrainedBox(
-              constraints: BoxConstraints(minHeight: 150, maxHeight: 200),
-              child: InventorySection(
-                expiringCount: 5,
-                expiringDays: 3,
-                totalCount: 24,
-              ),
-            ),
-          ],
         ),
       ),
     );

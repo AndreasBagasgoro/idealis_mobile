@@ -7,11 +7,11 @@ class RecommendationSection extends StatelessWidget {
   final String? logoPath;
 
   const  RecommendationSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     this.logoPath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

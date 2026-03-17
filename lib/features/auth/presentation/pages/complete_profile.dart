@@ -5,9 +5,11 @@ import 'package:idealis_mobile/shared/widgets/buttons/primary_button.dart';
 import 'package:idealis_mobile/shared/widgets/inputs/custom_text_field.dart';
 import 'package:idealis_mobile/shared/widgets/inputs/custom_dropdown_field.dart';
 import 'package:idealis_mobile/core/constants/app_colors.dart';
-import 'dart:developer' as _logger;
+import 'dart:developer' as logger;
 
 class CompleteProfilePage extends StatefulWidget {
+  const CompleteProfilePage({super.key});
+
   @override
   _CompleteProfilePageState createState() => _CompleteProfilePageState();
 }
@@ -18,7 +20,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   final TextEditingController heightController = TextEditingController();
   final TextEditingController weightController = TextEditingController();
   String? _selectedGender;
-  FocusNode _birthDateFocusNode = FocusNode();
+  final FocusNode _birthDateFocusNode = FocusNode();
 
   @override
   void dispose() {

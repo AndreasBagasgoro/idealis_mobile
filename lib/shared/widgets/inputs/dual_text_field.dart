@@ -13,7 +13,7 @@ class DualTextField extends StatelessWidget {
   final TextInputType secondKeyboardType;
 
   const DualTextField({
-    Key? key,
+    super.key,
     required this.firstController,
     required this.secondController,
     required this.firstLabel,
@@ -22,7 +22,7 @@ class DualTextField extends StatelessWidget {
     required this.secondHintText,
     this.firstKeyboardType = TextInputType.text,
     this.secondKeyboardType = TextInputType.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

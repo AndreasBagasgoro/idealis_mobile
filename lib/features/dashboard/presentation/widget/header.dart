@@ -31,11 +31,11 @@ class Header extends StatelessWidget {
   final VoidCallback? onNotificationTap;
 
   const Header({
-    Key? key,
+    super.key,
     required this.username,
     required this.logoPath,
     this.onNotificationTap,
-  }) : super(key: key);
+  });
 
 
   @override

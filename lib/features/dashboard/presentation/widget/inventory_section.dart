@@ -8,11 +8,11 @@ class InventorySection extends StatelessWidget {
   final int totalCount;
 
   const InventorySection({
-    Key? key,
+    super.key,
     required this.expiringCount,
     required this.expiringDays,
     required this.totalCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
